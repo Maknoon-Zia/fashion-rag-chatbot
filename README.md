@@ -74,7 +74,6 @@ fashion-rag-chatbot/
 | ![No supported answer](docs/screenshots/04-no-answer.png) | ![Sources List](docs/screenshots/05-Sources-list.png) |
 
 | Converstaion-History | 
-|---|---|
 | ![No supported answer](docs/screenshots/06-sidebar-history.png) |
 ## 2. Backend setup
 
