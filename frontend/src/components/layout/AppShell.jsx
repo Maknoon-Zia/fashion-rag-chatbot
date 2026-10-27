@@ -47,8 +47,6 @@ export default function AppShell() {
 
   async function handleNew() {
     setDrawerOpen(false);
-    // Reuse the open conversation if it is still empty instead of piling up blank chats.
-    if (activeId && chat.ready && chat.messages.length === 0) return;
     await createAndOpen();
   }
 

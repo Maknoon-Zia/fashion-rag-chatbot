@@ -69,10 +69,13 @@ fashion-rag-chatbot/
 |---|---|
 | ![Login page](docs/screenshots/01-login.png) | ![Answer with sources](docs/screenshots/03-grounded-answer.png) |
 
-| Out-of-scope question | Conversation history |
+| Out-of-scope question | Sources List |
 |---|---|
 | ![No supported answer](docs/screenshots/04-no-answer.png) | ![Sources List](docs/screenshots/05-Sources-list.png) |
 
+| Converstaion-History | 
+|---|---|
+| ![No supported answer](docs/screenshots/06-sidebar-history.png) |
 ## 2. Backend setup
 
 ```bash
@@ -128,6 +131,22 @@ npm run dev
 ```
 Open http://localhost:5173. `VITE_API_BASE_URL` must match the backend URL, and that frontend origin must be listed in
 the backend's `CORS_ORIGINS`.
+
+## Data model
+
+**MongoDB (database `fashion_chatbot`) is the source of truth for application data.**
+
+| Collection | Main fields | Indexes |
+|---|---|---|
+| `users` | `_id`, `name`, `email` (lowercase), `password_hash` (Argon2id), `created_at`, `updated_at` | unique `email` |
+| `conversations` | `_id`, `user_id`, `title`, `title_source` (default/auto/user), `created_at`, `updated_at`, `last_message_at` | `(user_id, last_message_at desc)` |
+| `messages` | `_id`, `conversation_id`, `user_id`, `role` (user/assistant), `content`, `status` (pending/answered/failed/ok), `created_at`, `retrieval` (grounded flag, source references, model) | `(conversation_id, created_at)` |
+| `revoked_tokens` | `jti`, `expires_at` | unique `jti`, TTL on `expires_at` |
+
+**Qdrant collection `fashion_knowledge`** holds only knowledge-base vectors: 768 dimensions, cosine distance.
+Payload per point: `document_id`, `chunk_id`, `source`, `title`, `section`, `category`, `retrieval_role`, `audience`,
+`language`, `access_scope`, `chunk_index`, `token_estimate`, `content_hash`, `text`, `embedding_model`,
+`embedding_dimensions`. The collection is created automatically by `python -m scripts.ingest`; it holds no user or chat data.
 
 ## 6. API summary
 
@@ -191,6 +210,7 @@ ingestion, retrieval filtering). **They do not prove retrieval quality or answer
   Mitigations: assistant output is rendered through react-markdown (no raw HTML), short token lifetime, revocation on logout.
 * **Synchronous endpoints:** FastAPI runs them in a thread pool; simpler to read and test than async everywhere and
   sufficient for a hackathon load.
+* **Production:** serve both the API and the frontend over HTTPS and set `CORS_ORIGINS` to the real frontend origin.
 
 ## 9. Known limitations
 
