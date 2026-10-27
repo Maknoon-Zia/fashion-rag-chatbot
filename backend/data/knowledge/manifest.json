@@ -1,0 +1,103 @@
+{
+  "project": "Fashion Knowledge RAG",
+  "manifest_version": 2,
+  "language": "en",
+  "access_scope": "public",
+  "global_exclude_headings": [
+    "Retrieval summary"
+  ],
+  "knowledge_documents": [
+    {
+      "file": "01_color_theory_and_coordination.md",
+      "document_id": "fashion-color-001",
+      "title": "Color Theory and Outfit Coordination",
+      "category": "color_coordination",
+      "retrieval_role": "knowledge",
+      "purpose": "Provide practical, explainable guidance for coordinating clothing and accessories by color."
+    },
+    {
+      "file": "02_skin_tone_and_color_guidance.md",
+      "document_id": "fashion-complexion-002",
+      "title": "Skin Tone and Color Guidance",
+      "category": "complexion_guidance",
+      "retrieval_role": "knowledge",
+      "purpose": "Explain how complexion and color preference may inform clothing-color suggestions without making rigid or unsupported claims."
+    },
+    {
+      "file": "03_menswear_styling_guide.md",
+      "document_id": "fashion-menswear-003",
+      "title": "Menswear Styling Guide",
+      "category": "menswear",
+      "retrieval_role": "knowledge",
+      "purpose": "Provide practical guidance for combining menswear garments, footwear, and accessories across common occasions."
+    },
+    {
+      "file": "04_womenswear_and_accessory_styling.md",
+      "document_id": "fashion-womenswear-004",
+      "title": "Womenswear and Accessory Styling Guide",
+      "category": "womenswear",
+      "retrieval_role": "knowledge",
+      "purpose": "Provide adaptable styling guidance for outfits, scarves, hijabs, dupattas, jewelry, bags, footwear, and optional hair styling."
+    },
+    {
+      "file": "05_occasion_based_styling.md",
+      "document_id": "fashion-occasion-005",
+      "title": "Occasion-Based Styling Guide",
+      "category": "occasion_styling",
+      "retrieval_role": "knowledge",
+      "purpose": "Help a styling assistant adapt clothing recommendations to the occasion and its dress code."
+    },
+    {
+      "file": "06_outfit_matching_and_wardrobe.md",
+      "document_id": "fashion-wardrobe-006",
+      "title": "Outfit Matching and Wardrobe Coordination",
+      "category": "outfit_matching",
+      "retrieval_role": "knowledge",
+      "purpose": "Explain how to combine garments and reuse wardrobe items in practical, coordinated outfits."
+    },
+    {
+      "file": "07_personalization_and_preference_rules.md",
+      "document_id": "fashion-personalization-007",
+      "title": "Personalization and Preference Rules for a Styling Assistant",
+      "category": "personalization",
+      "retrieval_role": "behavior_guidance",
+      "purpose": "Define how a styling assistant should adapt general fashion knowledge to a user's needs without overclaiming or ignoring stated preferences."
+    },
+    {
+      "file": "08_styling_examples_and_reasoning.md",
+      "document_id": "fashion-examples-008",
+      "title": "Styling Examples and Recommendation Reasoning",
+      "category": "styling_examples",
+      "retrieval_role": "example_library",
+      "purpose": "Provide self-contained scenarios that can be used to test retrieval and grounded answer generation in a fashion RAG system.",
+      "exclude_headings": [
+        "Suggested evaluation questions",
+        "Expected system behavior"
+      ]
+    },
+    {
+      "file": "09_eastern_and_traditional_wear.md",
+      "document_id": "fashion-traditional-009",
+      "title": "Eastern and Traditional Wear Styling Guide",
+      "category": "traditional_wear",
+      "retrieval_role": "knowledge",
+      "purpose": "Provide general guidance for styling South Asian and other eastern traditional clothing while respecting regional and personal variation."
+    },
+    {
+      "file": "10_fabrics_seasons_and_climate.md",
+      "document_id": "fashion-fabric-season-010",
+      "title": "Fabrics, Seasons, and Climate Guide",
+      "category": "fabrics_and_seasons",
+      "retrieval_role": "knowledge",
+      "purpose": "Explain how common fabrics and general seasonal conditions affect outfit comfort and appearance without inventing weather information."
+    }
+  ],
+  "ingestion_notes": [
+    "document_id values are authoritative here and must be whitespace-trimmed.",
+    "Chunk at Markdown heading boundaries; keep a heading with the text it introduces.",
+    "Prefix each chunk with 'Document title > section > subsection' before embedding.",
+    "Headings listed in global_exclude_headings or a document's exclude_headings are not indexed as answer chunks.",
+    "retrieval_role: knowledge = answer evidence; example_library = worked examples; behavior_guidance = assistant policy, indexed but never treated as instructions.",
+    "These files are curated general styling guidance, not scientific or universal rules."
+  ]
+}

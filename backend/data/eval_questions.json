@@ -1,0 +1,20 @@
+{
+  "note": "expected_documents lists every document that legitimately answers the question. in_scope=false questions must score BELOW the relevance threshold.",
+  "questions": [
+    {"q": "What should I wear with a charcoal suit and a white shirt for work?", "expected_documents": ["fashion-menswear-003", "fashion-color-001", "fashion-examples-008"], "in_scope": true},
+    {"q": "I have a black abaya. What hijab or scarf colors can I wear with it?", "expected_documents": ["fashion-womenswear-004", "fashion-color-001", "fashion-complexion-002", "fashion-examples-008"], "in_scope": true},
+    {"q": "What is the difference between skin depth and undertone?", "expected_documents": ["fashion-complexion-002"], "in_scope": true},
+    {"q": "How do I match my tie, belt and shoes with a navy suit?", "expected_documents": ["fashion-menswear-003", "fashion-color-001"], "in_scope": true},
+    {"q": "How can I style a colorful printed kurta?", "expected_documents": ["fashion-traditional-009", "fashion-wardrobe-006", "fashion-womenswear-004", "fashion-examples-008"], "in_scope": true},
+    {"q": "What should I wear to a job interview?", "expected_documents": ["fashion-occasion-005", "fashion-menswear-003", "fashion-womenswear-004"], "in_scope": true},
+    {"q": "How can I make several outfits from one pair of black trousers?", "expected_documents": ["fashion-wardrobe-006", "fashion-examples-008"], "in_scope": true},
+    {"q": "I dislike navy. What else can I wear instead?", "expected_documents": ["fashion-wardrobe-006", "fashion-personalization-007", "fashion-examples-008"], "in_scope": true},
+    {"q": "What fabrics are comfortable in hot humid weather?", "expected_documents": ["fashion-fabric-season-010"], "in_scope": true},
+    {"q": "What should I wear to an Eid gathering as a man?", "expected_documents": ["fashion-traditional-009", "fashion-occasion-005"], "in_scope": true},
+    {"q": "Should I choose gold or silver jewelry with a dusty green outfit?", "expected_documents": ["fashion-womenswear-004", "fashion-color-001", "fashion-examples-008"], "in_scope": true},
+    {"q": "What is the capital of France?", "expected_documents": [], "in_scope": false},
+    {"q": "How do I fix a flat bicycle tire?", "expected_documents": [], "in_scope": false},
+    {"q": "Who won the last cricket world cup?", "expected_documents": [], "in_scope": false},
+    {"q": "Write a Python function that sorts a list", "expected_documents": [], "in_scope": false}
+  ]
+}
